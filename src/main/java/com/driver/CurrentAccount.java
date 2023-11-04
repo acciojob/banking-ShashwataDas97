@@ -29,9 +29,9 @@ public class CurrentAccount extends BankAccount{
             }
         }
         if(isValid == false){
-            String newGeneratedTradeLicenseId = "";
+            String newGeneratedTradeLicenseId = null;
             newGeneratedTradeLicenseId = rearrangeString(tradeLicenseId);
-            if(newGeneratedTradeLicenseId == ""){
+            if(newGeneratedTradeLicenseId == null){
                 throw new ValidLicenseException("Valid License can not be generated");
             }
             else{
@@ -59,7 +59,7 @@ public class CurrentAccount extends BankAccount{
         int allowedFrequency = length % 2 == 0 ? length/2 : length/2 + 1;
         // Checking if the max frequency char is greater than the allowed frequency
         if(maxFrequency > allowedFrequency){
-            return "";
+            return null;
         }
 
         // Placing the max freq char in the even position first
