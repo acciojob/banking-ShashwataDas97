@@ -28,10 +28,10 @@ public class SavingsAccount extends BankAccount{
 
 
     public SavingsAccount(String name, double balance, double maxWithdrawalLimit, double rate){
-        // minimum balance is 0 by default
+        // Minimum balance is 0 by default
         super(name, balance, 0);
-        this.maxWithdrawalLimit=maxWithdrawalLimit;
-        this.rate= rate;
+        this.maxWithdrawalLimit = maxWithdrawalLimit;
+        this.rate = rate;
     }
 
     public SavingsAccount() {
@@ -42,26 +42,27 @@ public class SavingsAccount extends BankAccount{
         // Might throw the following errors:
         // 1. "Maximum Withdraw Limit Exceed" : If the amount exceeds maximum withdrawal limit
         // 2. "Insufficient Balance" : If the amount exceeds balance
-        if(amount>maxWithdrawalLimit){
+        if(amount > maxWithdrawalLimit){
             throw new Exception("Maximum Withdraw Limit Exceeded");
         }
-        else if(amount>this.getBalance()){
+        else if(amount > this.getBalance()){
             throw new Exception("Insufficient Balance");
         }
-        else this.setBalance(this.getBalance()-amount);
+        else {
+            this.setBalance(this.getBalance() - amount);
+        }
 
     }
 
     public double getSimpleInterest(int years){
         // Return the final amount considering that bank gives simple interest on current amount
-        // S.I= P*T*R/100
-        return (this.getBalance()*years*this.rate/100)+this.getBalance();
+        // S.I = P*T*R/100
+        return (this.getBalance() * years * this.rate / 100) + this.getBalance();
     }
 
     public double getCompoundInterest(int times, int years){
         // Return the final amount considering that bank gives compound interest on current amount given times per year
-        // Amount= p(1+r/n*100)^nt
-        return this.getBalance()*Math.pow((1+this.rate/(times*100)),times*years);
+        // Amount = p(1+r/n*100)^nt
+        return this.getBalance() * Math.pow((1 + this.rate / (times * 100)), times * years);
     }
-
 }
